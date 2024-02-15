@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Document metadata -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Sheet</title>
+</head>
+<body>
+    <!-- Time sheet form -->
+    <form id="timeSheetForm">
+        Employee Name: <input type="text" name="employeeName"><br>
+        Work Hours: <input type="text" name="workHours"><br>
+        <!-- Add more fields as needed -->
+
+        <!-- Button to submit the form -->
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+
+    <!-- JavaScript section -->
+    <script>
+        // Function to submit the form data
+        function submitForm() {
+            // Create a FormData object from the form
+            var formData = new FormData(document.getElementById("timeSheetForm"));
+
+            // Perform a fetch request to the Google Apps Script endpoint
+            fetch('URL_TO_GOOGLE_APPS_SCRIPT', {
+                method: 'POST',  // Use the POST method
+                body: formData    // Include the form data in the request body
+            })
+            .then(response => {
+                // Handle the response as needed
+                console.log('Form submitted successfully:', response);
+            })
+            .catch(error => {
+                // Handle errors
+                console.error('Error submitting form:', error);
+            });
+        }
+    </script>
+</body>
+</html>
